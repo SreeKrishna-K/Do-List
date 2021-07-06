@@ -1,0 +1,26 @@
+<%- include("partials/header") -%>
+<div class="box heading">
+    <h1>
+        HOME
+    </h1>
+</div>
+<div class="box">
+    <% List.forEach(function(listItem){ %>
+        <div class="item">
+            <p>
+                <a href="/lists/<%= listItem.name %>">
+                    <%= listItem.name %>
+                </a>
+            </p>
+            <form action="/delete" method="POST" class="delete-form">
+                    <button type="submit" value="<%= listItem._id %>" name="del"><span class="fas fa-trash fa-2x"></span></button>
+            </form>
+        </div>
+    <% }) %>
+    
+    <form class="item" action="/" method="POST">
+        <input type="text" name="newList" placeholder="New List" autocomplete="off" autofocus="on" required=true>
+        <button type="submit" name="list"><span class="fas fa-plus fa-2x"></span></button>
+    </form>
+</div>
+<%- include("partials/footer") -%>
